@@ -1,69 +1,11 @@
-import Image from "next/image";
+import Link from "next/link";
+import { dishes } from "./restaurant-data";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <>
+    <section className="hero"><div className="heroShade"/><div className="shell heroContent"><span className="eyebrow light">Mediterranean dining · Birmingham</span><h1>A table worth<br/>remembering.</h1><p>Season-led Mediterranean plates, genuine hospitality and a room made for lingering.</p><div className="actions"><Link className="button" href="/reserve">Book a table</Link><Link className="button ghost" href="/menu">Explore the menu</Link></div></div><div className="heroMeta"><span>Colmore Row, Birmingham</span><span>Tue–Sun · Lunch & dinner</span><span>Private dining available</span></div></section>
+    <section className="section shell"><div className="sectionHead"><div><span className="eyebrow">From our kitchen</span><h2>Signature dishes</h2></div><Link className="textLink" href="/menu">View the full menu →</Link></div><div className="dishGrid">{dishes.slice(0,4).map((dish,index)=><Link href={`/menu/${dish.slug}`} className="dishCard" key={dish.slug}><div className={`dishPhoto food-${index+1}`}><span>{dish.tag}</span></div><div className="dishInfo"><div><h3>{dish.name}</h3><p>{dish.description}</p></div><b>£{dish.price}</b></div></Link>)}</div></section>
+    <section className="storySplit"><div className="storyImage"/><div className="storyCopy"><span className="eyebrow">Our story</span><h2>Rooted in tradition.<br/>Inspired by the Mediterranean.</h2><p>Ember & Olive is a celebration of honest ingredients, warm hospitality and the joy of gathering. Our kitchen follows the seasons, working with British producers and Mediterranean flavours.</p><Link className="button dark" href="/story">Discover our story</Link></div></section>
+    <section className="reserveBand"><div className="shell"><span className="eyebrow light">Your table is waiting</span><h2>Make an evening of it.</h2><p>Choose your date, see live availability and reserve your favourite table or private room.</p><Link className="button cream" href="/reserve">Check availability</Link></div></section>
+  </>;
 }
