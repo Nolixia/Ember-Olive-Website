@@ -6,10 +6,7 @@ import {Header,Footer} from "./components";
 export const metadata: Metadata = {
   title: "Ember & Olive Restaurant",
   description: "Modern Mediterranean dining in Birmingham. Explore our seasonal menu and reserve your table or private dining room online.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
+
 };
 
 export default function RootLayout({
