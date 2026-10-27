@@ -1,11 +1,12 @@
+import NolixiaPreview from "./nolixia-preview";
 import type { Metadata } from "next";
 import "./globals.css";
 import "./mobile-menu.css";
 import {Header,Footer} from "./components";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = {robots:{index:false,follow:true},metadataBase:new URL("https://ember-olive-website.netlify.app"),
   title: "Ember & Olive Restaurant",
-  description: "Modern Mediterranean dining in Birmingham. Explore our seasonal menu and reserve your table or private dining room online.",
+  description:"Nolixia website design preview with illustrative business content. Explore the sample and discuss a website for your business.",
 
 };
 
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><Header/>{children}<Footer/></body>
+      <body><NolixiaPreview/><Header/>{children}<Footer/><NolixiaPreview footer/></body>
     </html>
   );
 }
